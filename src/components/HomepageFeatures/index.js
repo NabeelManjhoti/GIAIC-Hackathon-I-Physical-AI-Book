@@ -4,32 +4,32 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Embodied Intelligence',
+    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default, // Will be replaced with custom content
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Explore the fascinating world of embodied AI where artificial intelligence meets physical interaction.
+        Learn how robots can perceive, reason, and act in real-world environments.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'ROS 2 Integration',
+    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default, // Will be replaced with custom content
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Master the Robot Operating System 2 framework for building complex robotic applications
+        with advanced communication, navigation, and control systems.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'NVIDIA Isaac Sim',
+    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default, // Will be replaced with custom content
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Leverage NVIDIA's powerful simulation environment for robotics development,
+        testing, and training with realistic physics and sensor models.
       </>
     ),
   },
@@ -39,7 +39,9 @@ function Feature({Svg, title, description}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <div className={styles.featureSvg} role="img" style={{width: '200px', height: '200px', background: 'linear-gradient(135deg, #00BFFF 0%, #1E3A5F 100%)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto'}}>
+          <span style={{color: 'white', fontSize: '48px', fontWeight: 'bold'}}>{title.charAt(0)}</span>
+        </div>
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>

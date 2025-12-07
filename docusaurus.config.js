@@ -75,8 +75,8 @@ const config = {
       navbar: {
         title: 'Physical AI & Humanoid Robotics',
         logo: {
-          alt: 'Physical AI & Humanoid Robotics Logo',
-          src: 'img/logo.svg',
+          alt: 'AI Robotics Logo',
+          src: 'img/ai-robotics-logo.svg',
         },
         items: [
           {
@@ -99,8 +99,41 @@ const config = {
             title: 'Textbook',
             items: [
               {
+                label: 'About the Author',
+                to: '/author-intro',
+              },
+              {
                 label: 'Introduction to Embodied Intelligence',
-                to: '/1-introduction-embodied-intelligence',
+                to: '/introduction-embodied-intelligence',
+              },
+              {
+                label: 'ROS 2 Basics',
+                to: '/ros2-basics',
+              },
+              {
+                label: 'NVIDIA Isaac Sim',
+                to: '/nvidia-isaac-gym',
+              },
+            ],
+          },
+          {
+            title: 'Resources',
+            items: [
+              {
+                label: 'ROS 2 Documentation',
+                href: 'https://docs.ros.org/en/rolling/',
+              },
+              {
+                label: 'NVIDIA Isaac Sim',
+                href: 'https://developer.nvidia.com/isaac-sim',
+              },
+              {
+                label: 'Python Robotics',
+                href: 'https://pypi.org/project/PythonRobotics/',
+              },
+              {
+                label: 'OpenAI Gym',
+                href: 'https://gym.openai.com/',
               },
             ],
           },
@@ -108,30 +141,21 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Robotics Stack Exchange',
+                href: 'https://robotics.stackexchange.com/',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'AI Stack Exchange',
+                href: 'https://ai.stackexchange.com/',
               },
               {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'ROS Discourse',
+                href: 'https://discourse.ros.org/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook.`,
       },
       prism: {
         theme: prismThemes.github,

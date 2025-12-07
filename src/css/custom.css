@@ -28,3 +28,18 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Custom footer styling */
+.footer {
+  background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%) !important;
+}
+
+.footer__links {
+  margin-bottom: 1rem;
+}
+
+.footer__copyright {
+  border-top: 1px solid #2a4d7a;
+  padding-top: 1rem;
+  color: #e0e0e0;
+}

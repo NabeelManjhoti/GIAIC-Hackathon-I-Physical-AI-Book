@@ -5,23 +5,25 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import Heading from '@theme/Heading';
-import styles from './index.module.css';
+import styles from './Home.module.css'; // Updated to use new dark-themed CSS module
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/1-introduction-embodied-intelligence">
-            Read the Book - Start Here 📚
-          </Link>
+    <header className={clsx(styles.heroBanner)}>
+      <div className={styles.heroContent}>
+        <div className={styles.heroTextCentered}>
+          <Heading as="h1" className={styles.heroTitle}>
+            Physical AI & Humanoid Robotics Textbook
+          </Heading>
+          <p className={styles.heroSubtitle}>Master Embodied AI and Humanoid Robotics with ROS 2 and NVIDIA Isaac Sim</p>
+          <div className={styles.buttons}>
+            <Link
+              className={styles.primaryButton}
+              to="/author-intro/">
+              Meet The Author
+            </Link>
+          </div>
         </div>
       </div>
     </header>

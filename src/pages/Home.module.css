@@ -1,0 +1,143 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  background: #121212;
+  color: #FFFFFF;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.heroContent {
+  max-width: 1200px;
+  padding: 2rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.heroTextCentered {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 996px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .heroImageContainer {
+    min-width: unset;
+  }
+
+  .heroText {
+    min-width: unset;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroTitle {
+    font-size: 1.8rem;
+  }
+}
+
+.heroSubtitle {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  color: #E0E0E0;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 996px) {
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  background-color: #00BFFF !important; /* Electric blue color */
+  color: #000000 !important; /* Black text for contrast */
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
+
+.primaryButton:hover {
+  background-color: #009ACD !important; /* Darker electric blue on hover */
+  color: #000000 !important;
+}
+
+@media screen and (max-width: 1100px) {
+  .heroBanner {
+    padding: 1rem;
+  }
+
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .heroImageContainer {
+    min-width: unset;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 1rem;
+  }
+
+  .heroText {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .primaryButton {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
