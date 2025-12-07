@@ -1,0 +1,30 @@
+{
+  "id": "ros2-basics",
+  "title": "ROS 2 Basics (Nodes, Topics, Services)",
+  "description": "Fundamentals of Robot Operating System 2 - Nodes, Topics, Services, and communication patterns",
+  "source": "@site/docs/2-ros2-basics.mdx",
+  "sourceDirName": ".",
+  "slug": "/2-ros2-basics",
+  "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/2-ros2-basics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/2-ros2-basics.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2,
+    "title": "ROS 2 Basics (Nodes, Topics, Services)",
+    "description": "Fundamentals of Robot Operating System 2 - Nodes, Topics, Services, and communication patterns",
+    "slug": "/2-ros2-basics"
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "Introduction to Embodied Intelligence",
+    "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/1-introduction-embodied-intelligence"
+  },
+  "next": {
+    "title": "Simulating with Gazebo (World Creation, Physics)",
+    "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/3-gazebo-simulation"
+  }
+}

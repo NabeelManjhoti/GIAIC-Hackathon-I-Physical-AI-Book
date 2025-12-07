@@ -1,0 +1,30 @@
+{
+  "id": "nvidia-isaac-gym",
+  "title": "NVIDIA Isaac Sim & Gym (Reinforcement Learning)",
+  "description": "Using NVIDIA Isaac Sim for reinforcement learning in robotics - integration with OpenAI Gym, training environments, and policy development",
+  "source": "@site/docs/4-nvidia-isaac-gym.mdx",
+  "sourceDirName": ".",
+  "slug": "/4-nvidia-isaac-gym",
+  "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/4-nvidia-isaac-gym",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/4-nvidia-isaac-gym.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4,
+    "title": "NVIDIA Isaac Sim & Gym (Reinforcement Learning)",
+    "description": "Using NVIDIA Isaac Sim for reinforcement learning in robotics - integration with OpenAI Gym, training environments, and policy development",
+    "slug": "/4-nvidia-isaac-gym"
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "Simulating with Gazebo (World Creation, Physics)",
+    "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/3-gazebo-simulation"
+  },
+  "next": {
+    "title": "Real-World Humanoid Control",
+    "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/5-real-world-humanoid-control"
+  }
+}

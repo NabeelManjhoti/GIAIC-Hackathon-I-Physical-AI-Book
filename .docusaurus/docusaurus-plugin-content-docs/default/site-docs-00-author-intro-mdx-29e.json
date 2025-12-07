@@ -1,0 +1,26 @@
+{
+  "id": "author-intro",
+  "title": "About the Author",
+  "description": "Learn about the author behind this comprehensive guide to Physical AI and Humanoid Robotics",
+  "source": "@site/docs/00-author-intro.mdx",
+  "sourceDirName": ".",
+  "slug": "/author-intro",
+  "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/author-intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/00-author-intro.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 0,
+  "frontMatter": {
+    "sidebar_position": 0,
+    "title": "About the Author",
+    "description": "Learn about the author behind this comprehensive guide to Physical AI and Humanoid Robotics",
+    "slug": "/author-intro"
+  },
+  "sidebar": "textbookSidebar",
+  "next": {
+    "title": "Introduction to Embodied Intelligence",
+    "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/1-introduction-embodied-intelligence"
+  }
+}

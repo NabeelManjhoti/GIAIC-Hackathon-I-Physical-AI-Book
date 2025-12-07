@@ -1,0 +1,26 @@
+{
+  "id": "real-world-humanoid-control",
+  "title": "Real-World Humanoid Control",
+  "description": "Implementing control systems for humanoid robots in real-world scenarios - hardware integration, control architectures, and deployment strategies",
+  "source": "@site/docs/5-real-world-humanoid-control.mdx",
+  "sourceDirName": ".",
+  "slug": "/5-real-world-humanoid-control",
+  "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/5-real-world-humanoid-control",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/5-real-world-humanoid-control.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5,
+    "title": "Real-World Humanoid Control",
+    "description": "Implementing control systems for humanoid robots in real-world scenarios - hardware integration, control architectures, and deployment strategies",
+    "slug": "/5-real-world-humanoid-control"
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "NVIDIA Isaac Sim & Gym (Reinforcement Learning)",
+    "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/4-nvidia-isaac-gym"
+  }
+}

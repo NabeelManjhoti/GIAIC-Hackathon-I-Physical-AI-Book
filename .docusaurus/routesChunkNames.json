@@ -1,0 +1,57 @@
+{
+  "/GIAIC-Hackathon-I-Physical-AI-Book/markdown-page/-b85": {
+    "__comp": "1f391b9e",
+    "__context": {
+      "plugin": "a7456010"
+    },
+    "content": "393be207"
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/-4a8": {
+    "__comp": "c4f5d8e4",
+    "__context": {
+      "plugin": "a7456010"
+    },
+    "config": "5e9f5e1a"
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/-abc": {
+    "__comp": "5e95c892",
+    "__context": {
+      "plugin": "aba21aa0"
+    }
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/-a61": {
+    "__comp": "a7bd4aaa",
+    "__props": "e94365b1"
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/-21c": {
+    "__comp": "a94703ab"
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/1-introduction-embodied-intelligence/-458": {
+    "__comp": "17896441",
+    "content": "62980062"
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/2-ros2-basics/-d44": {
+    "__comp": "17896441",
+    "content": "f1a6b11d"
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/3-gazebo-simulation/-9f9": {
+    "__comp": "17896441",
+    "content": "acf64aa6"
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/4-nvidia-isaac-gym/-f83": {
+    "__comp": "17896441",
+    "content": "5e9725fa"
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/5-real-world-humanoid-control/-d0a": {
+    "__comp": "17896441",
+    "content": "ca516ead"
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/author-intro/-e02": {
+    "__comp": "17896441",
+    "content": "29e7d8a4"
+  },
+  "/GIAIC-Hackathon-I-Physical-AI-Book/author-introduction/-fa7": {
+    "__comp": "17896441",
+    "content": "989258f5"
+  }
+}

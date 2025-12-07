@@ -1,0 +1,293 @@
+{
+  "entrypoints": [
+    "main"
+  ],
+  "origins": {
+    "237": [
+      237
+    ],
+    "285": [
+      61,
+      401,
+      869,
+      285
+    ],
+    "17896441": [
+      285,
+      869,
+      401
+    ],
+    "62980062": [
+      488
+    ],
+    "main": [
+      354,
+      869,
+      792
+    ],
+    "runtime~main": [
+      792,
+      869,
+      354
+    ],
+    "1f391b9e": [
+      285,
+      869,
+      61
+    ],
+    "29e7d8a4": [
+      623
+    ],
+    "393be207": [
+      134
+    ],
+    "5e95c892": [
+      647
+    ],
+    "5e9725fa": [
+      897
+    ],
+    "989258f5": [
+      905
+    ],
+    "a7456010": [
+      235
+    ],
+    "a7bd4aaa": [
+      98
+    ],
+    "a94703ab": [
+      869,
+      48
+    ],
+    "aba21aa0": [
+      742
+    ],
+    "acf64aa6": [
+      923
+    ],
+    "c4f5d8e4": [
+      869,
+      634
+    ],
+    "ca516ead": [
+      205
+    ],
+    "e94365b1": [
+      914
+    ],
+    "f1a6b11d": [
+      429
+    ],
+    "styles": [
+      48,
+      61,
+      285,
+      354,
+      401,
+      634,
+      792,
+      869
+    ]
+  },
+  "assets": {
+    "48": {
+      "js": [
+        {
+          "file": "assets/js/a94703ab.c3046442.js",
+          "hash": "63be397bb8775680",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/a94703ab.c3046442.js"
+        }
+      ]
+    },
+    "61": {
+      "js": [
+        {
+          "file": "assets/js/1f391b9e.5a2dc827.js",
+          "hash": "d10c2a58aa0b87b5",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/1f391b9e.5a2dc827.js"
+        }
+      ]
+    },
+    "98": {
+      "js": [
+        {
+          "file": "assets/js/a7bd4aaa.e6b8dfa7.js",
+          "hash": "51f167ec87e3001f",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/a7bd4aaa.e6b8dfa7.js"
+        }
+      ]
+    },
+    "134": {
+      "js": [
+        {
+          "file": "assets/js/393be207.2d18524d.js",
+          "hash": "c49ff16a2e8afaac",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/393be207.2d18524d.js"
+        }
+      ]
+    },
+    "205": {
+      "js": [
+        {
+          "file": "assets/js/ca516ead.08a8bd96.js",
+          "hash": "00516fa2e7dcd7b2",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/ca516ead.08a8bd96.js"
+        }
+      ]
+    },
+    "235": {
+      "js": [
+        {
+          "file": "assets/js/a7456010.372dbe72.js",
+          "hash": "4f1c5a0a6fca7514",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/a7456010.372dbe72.js"
+        }
+      ]
+    },
+    "237": {
+      "js": [
+        {
+          "file": "assets/js/237.969d0a19.js",
+          "hash": "2ff778ff4830fa4b",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/237.969d0a19.js"
+        }
+      ]
+    },
+    "285": {
+      "js": [
+        {
+          "file": "assets/js/285.3f2ebd4f.js",
+          "hash": "330908097dd8a5b2",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/285.3f2ebd4f.js"
+        }
+      ]
+    },
+    "354": {
+      "js": [
+        {
+          "file": "assets/js/runtime~main.6ee95637.js",
+          "hash": "929f0cf6bd9005ba",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/runtime~main.6ee95637.js"
+        }
+      ]
+    },
+    "401": {
+      "js": [
+        {
+          "file": "assets/js/17896441.9450cffc.js",
+          "hash": "617909abe7c1d56b",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/17896441.9450cffc.js"
+        }
+      ]
+    },
+    "429": {
+      "js": [
+        {
+          "file": "assets/js/f1a6b11d.6bdc7a5f.js",
+          "hash": "81bea9028d2bb249",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/f1a6b11d.6bdc7a5f.js"
+        }
+      ]
+    },
+    "488": {
+      "js": [
+        {
+          "file": "assets/js/62980062.ead60575.js",
+          "hash": "5fe1b0137275fb31",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/62980062.ead60575.js"
+        }
+      ]
+    },
+    "623": {
+      "js": [
+        {
+          "file": "assets/js/29e7d8a4.d65a8ab1.js",
+          "hash": "4f3b49e75568bbd6",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/29e7d8a4.d65a8ab1.js"
+        }
+      ]
+    },
+    "634": {
+      "js": [
+        {
+          "file": "assets/js/c4f5d8e4.00ebe991.js",
+          "hash": "158f78e3cd06802c",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/c4f5d8e4.00ebe991.js"
+        }
+      ]
+    },
+    "647": {
+      "js": [
+        {
+          "file": "assets/js/5e95c892.f01497bd.js",
+          "hash": "3b22ff04dc72d5a9",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/5e95c892.f01497bd.js"
+        }
+      ]
+    },
+    "742": {
+      "js": [
+        {
+          "file": "assets/js/aba21aa0.5098e6ab.js",
+          "hash": "0e84e66394fd6b07",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/aba21aa0.5098e6ab.js"
+        }
+      ]
+    },
+    "792": {
+      "js": [
+        {
+          "file": "assets/js/main.acf6679d.js",
+          "hash": "46efed4f4384ced6",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/main.acf6679d.js"
+        }
+      ]
+    },
+    "869": {
+      "css": [
+        {
+          "file": "assets/css/styles.d55f3301.css",
+          "hash": "f14975efab7f9823",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/css/styles.d55f3301.css"
+        }
+      ]
+    },
+    "897": {
+      "js": [
+        {
+          "file": "assets/js/5e9725fa.e89a871c.js",
+          "hash": "6bebc791d76a75f5",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/5e9725fa.e89a871c.js"
+        }
+      ]
+    },
+    "905": {
+      "js": [
+        {
+          "file": "assets/js/989258f5.88c46fce.js",
+          "hash": "f223e26d3005b66b",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/989258f5.88c46fce.js"
+        }
+      ]
+    },
+    "914": {
+      "js": [
+        {
+          "file": "assets/js/e94365b1.fe375504.js",
+          "hash": "7bb71f925d3697a3",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/e94365b1.fe375504.js"
+        }
+      ]
+    },
+    "923": {
+      "js": [
+        {
+          "file": "assets/js/acf64aa6.6dade94b.js",
+          "hash": "f56806fb6b6e49f2",
+          "publicPath": "/GIAIC-Hackathon-I-Physical-AI-Book/assets/js/acf64aa6.6dade94b.js"
+        }
+      ]
+    }
+  }
+}

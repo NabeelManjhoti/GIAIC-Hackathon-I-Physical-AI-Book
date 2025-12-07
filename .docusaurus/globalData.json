@@ -1,0 +1,62 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/GIAIC-Hackathon-I-Physical-AI-Book/",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/GIAIC-Hackathon-I-Physical-AI-Book/",
+          "mainDocId": "author-intro",
+          "docs": [
+            {
+              "id": "author-intro",
+              "path": "/GIAIC-Hackathon-I-Physical-AI-Book/author-intro",
+              "sidebar": "textbookSidebar"
+            },
+            {
+              "id": "author-introduction",
+              "path": "/GIAIC-Hackathon-I-Physical-AI-Book/author-introduction"
+            },
+            {
+              "id": "gazebo-simulation",
+              "path": "/GIAIC-Hackathon-I-Physical-AI-Book/3-gazebo-simulation",
+              "sidebar": "textbookSidebar"
+            },
+            {
+              "id": "introduction-embodied-intelligence",
+              "path": "/GIAIC-Hackathon-I-Physical-AI-Book/1-introduction-embodied-intelligence",
+              "sidebar": "textbookSidebar"
+            },
+            {
+              "id": "nvidia-isaac-gym",
+              "path": "/GIAIC-Hackathon-I-Physical-AI-Book/4-nvidia-isaac-gym",
+              "sidebar": "textbookSidebar"
+            },
+            {
+              "id": "real-world-humanoid-control",
+              "path": "/GIAIC-Hackathon-I-Physical-AI-Book/5-real-world-humanoid-control",
+              "sidebar": "textbookSidebar"
+            },
+            {
+              "id": "ros2-basics",
+              "path": "/GIAIC-Hackathon-I-Physical-AI-Book/2-ros2-basics",
+              "sidebar": "textbookSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "textbookSidebar": {
+              "link": {
+                "path": "/GIAIC-Hackathon-I-Physical-AI-Book/author-intro",
+                "label": "author-intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

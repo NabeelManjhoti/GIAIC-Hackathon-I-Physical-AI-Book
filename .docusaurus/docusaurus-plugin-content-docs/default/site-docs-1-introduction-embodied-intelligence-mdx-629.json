@@ -1,0 +1,30 @@
+{
+  "id": "introduction-embodied-intelligence",
+  "title": "Introduction to Embodied Intelligence",
+  "description": "Understanding the fundamentals of embodied intelligence and its role in physical AI systems",
+  "source": "@site/docs/1-introduction-embodied-intelligence.mdx",
+  "sourceDirName": ".",
+  "slug": "/1-introduction-embodied-intelligence",
+  "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/1-introduction-embodied-intelligence",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/1-introduction-embodied-intelligence.mdx",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "title": "Introduction to Embodied Intelligence",
+    "description": "Understanding the fundamentals of embodied intelligence and its role in physical AI systems",
+    "slug": "/1-introduction-embodied-intelligence"
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "About the Author",
+    "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/author-intro"
+  },
+  "next": {
+    "title": "ROS 2 Basics (Nodes, Topics, Services)",
+    "permalink": "/GIAIC-Hackathon-I-Physical-AI-Book/2-ros2-basics"
+  }
+}
