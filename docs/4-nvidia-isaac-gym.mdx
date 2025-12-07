@@ -1,0 +1,470 @@
+---
+sidebar_position: 4
+title: "NVIDIA Isaac Sim & Gym (Reinforcement Learning)"
+description: "Using NVIDIA Isaac Sim for reinforcement learning in robotics - integration with OpenAI Gym, training environments, and policy development"
+slug: "/nvidia-isaac-gym"
+---
+
+# NVIDIA Isaac Sim & Gym (Reinforcement Learning)
+
+## Introduction to NVIDIA Isaac Sim
+
+NVIDIA Isaac Sim is a comprehensive robotics simulation application and ecosystem that provides a flexible foundation for developing, testing, and validating AI-based solutions for robotics. Built on NVIDIA Omniverse, Isaac Sim offers photorealistic rendering, accurate physics simulation, and seamless integration with popular reinforcement learning frameworks.
+
+## Installation and Setup
+
+### Prerequisites
+- NVIDIA GPU with CUDA support (RTX series recommended)
+- NVIDIA Omniverse system requirements
+- ROS 2 installation
+- Python 3.8+ with appropriate CUDA drivers
+
+### Installation Process
+```bash
+# Install Isaac Sim via Omniverse Launcher
+# Download and install Omniverse Launcher from NVIDIA Developer website
+# Install Isaac Sim from the launcher
+
+# Install Isaac Gym
+# Download Isaac Gym Preview 4 from NVIDIA Developer website
+# Extract and install
+cd isaacgym/python
+pip install -e .
+```
+
+### ROS 2 Integration
+```bash
+# Install Isaac ROS packages
+sudo apt install ros-humble-isaac-ros-gems ros-humble-isaac-ros-common
+
+# Source the setup
+source /opt/ros/humble/setup.bash
+source ~/isaac-sim/python.sh  # or wherever Isaac Sim is installed
+```
+
+## Isaac Sim Architecture
+
+### Core Components
+- **Omniverse Nucleus**: Central server for multi-user collaboration
+- **Physics Engine**: PhysX-based accurate physics simulation
+- **Rendering Engine**: Real-time photorealistic rendering
+- **ROS 2 Bridge**: Bidirectional communication with ROS 2
+
+### Simulation Environment Structure
+```
+Isaac Sim Environment
+├── World Manager
+│   ├── Scene Graph
+│   ├── Physics Scene
+│   └── Rendering Scene
+├── Robot Assets
+├── Sensor Assets
+├── Environment Assets
+└── Control Systems
+```
+
+## Setting Up Reinforcement Learning Environments
+
+### Basic Environment Structure
+```python
+# Example: Custom RL environment using Isaac Gym
+import omni
+from omni.isaac.gym.envs.tasks.base.rl_task import RLTask
+from omni.isaac.core.scenes.scene import Scene
+from omni.isaac.core.utils.prims import create_prim
+from omni.isaac.core.utils.stage import add_reference_to_stage
+import numpy as np
+
+class CustomRobotTask(RLTask):
+    def __init__(
+        self,
+        name,
+        offset=None
+    ):
+        # Task-specific parameters
+        self._num_envs = 16
+        self._env_spacing = 2.5
+        self._max_episode_length = 500
+
+        # Initialize parent class
+        RLTask.__init__(self, name=name, offset=offset)
+
+    def set_up_scene(self, scene: Scene) -> None:
+        # Add robot to scene
+        self.get_robot()
+
+        # Add objects to scene
+        self.get_objects()
+
+        # Call parent method to set up scene
+        super().set_up_scene(scene)
+
+        # Initialize views
+        self.initialize_views()
+
+    def get_observations(self) -> dict:
+        # Return observations for the current step
+        obs = {
+            "obs_buf": self.obs_buf
+        }
+        return obs
+
+    def pre_physics_step(self, actions) -> None:
+        # Process actions before physics simulation
+        pass
+
+    def post_reset(self) -> None:
+        # Reset the environment
+        pass
+```
+
+### Robot Asset Integration
+```python
+# Loading a robot model in Isaac Sim
+from omni.isaac.core.robots.robot import Robot
+from omni.isaac.core.utils.nucleus import get_assets_root_path
+from omni.isaac.core.utils.stage import add_reference_to_stage
+
+class CustomRobot(Robot):
+    def __init__(
+        self,
+        prim_path: str,
+        name: str = "custom_robot",
+        usd_path: str = None,
+        position: np.ndarray = np.array([0.0, 0.0, 0.0]),
+        orientation: np.ndarray = np.array([1.0, 0.0, 0.0, 0.0]),
+    ):
+        self._usd_path = usd_path
+        self._position = position
+        self._orientation = orientation
+
+        add_reference_to_stage(
+            usd_path=self._usd_path,
+            prim_path=prim_path,
+        )
+
+        super().__init__(
+            prim_path=prim_path,
+            name=name,
+            position=position,
+            orientation=orientation,
+        )
+```
+
+## Integration with OpenAI Gym
+
+### Creating Gym-Compatible Environments
+```python
+import gym
+from gym import spaces
+import numpy as np
+from omni.isaac.core.utils.types import ArticulationAction
+import torch
+
+class IsaacGymEnvironment(gym.Env):
+    def __init__(self, task):
+        self.task = task
+
+        # Define action and observation spaces
+        self.action_space = spaces.Box(
+            low=-1.0,
+            high=1.0,
+            shape=(self.task.num_actions,),
+            dtype=np.float32
+        )
+
+        self.observation_space = spaces.Box(
+            low=-np.inf,
+            high=np.inf,
+            shape=(self.task.num_observations,),
+            dtype=np.float32
+        )
+
+    def reset(self):
+        # Reset the simulation
+        self.task.reset()
+        obs = self.task.get_observations()
+        return obs["obs_buf"].cpu().numpy()
+
+    def step(self, action):
+        # Apply action to the robot
+        actions = ArticulationAction(joint_positions=action)
+        self.task.apply_actions(actions)
+
+        # Step the simulation
+        self.task.step()
+
+        # Get observations, rewards, and done status
+        obs = self.task.get_observations()
+        reward = self.task.get_rewards()
+        done = self.task.get_dones()
+
+        return obs["obs_buf"].cpu().numpy(), reward.cpu().numpy(), done.cpu().numpy(), {}
+```
+
+### Environment Registration
+```python
+# Register the environment with Gym
+from gym.envs.registration import register
+
+register(
+    id='IsaacRobot-v0',
+    entry_point='path.to.your.environment:IsaacGymEnvironment',
+    max_episode_steps=500,
+)
+```
+
+## Reinforcement Learning Algorithms
+
+### PPO Implementation with Isaac Sim
+```python
+import torch
+import torch.nn as nn
+from stable_baselines3 import PPO
+from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
+from stable_baselines3.common.env_util import make_vec_env
+
+# Custom policy network
+class CustomActorCriticPolicy(nn.Module):
+    def __init__(self, observation_dim, action_dim):
+        super(CustomActorCriticPolicy, self).__init__()
+
+        # Shared feature extractor
+        self.feature_extractor = nn.Sequential(
+            nn.Linear(observation_dim, 256),
+            nn.ReLU(),
+            nn.Linear(256, 256),
+            nn.ReLU()
+        )
+
+        # Actor (policy) network
+        self.actor = nn.Sequential(
+            nn.Linear(256, 256),
+            nn.ReLU(),
+            nn.Linear(256, action_dim),
+            nn.Tanh()
+        )
+
+        # Critic (value) network
+        self.critic = nn.Sequential(
+            nn.Linear(256, 256),
+            nn.ReLU(),
+            nn.Linear(256, 1)
+        )
+
+    def forward(self, observations):
+        features = self.feature_extractor(observations)
+        actions = self.actor(features)
+        values = self.critic(features)
+        return actions, values
+
+# Training setup
+def train_agent():
+    # Create vectorized environment
+    env = make_vec_env('IsaacRobot-v0', n_envs=4)
+
+    # Initialize PPO agent
+    model = PPO(
+        'MlpPolicy',
+        env,
+        verbose=1,
+        learning_rate=3e-4,
+        n_steps=2048,
+        batch_size=64,
+        n_epochs=10,
+        gamma=0.99,
+        gae_lambda=0.95,
+        clip_range=0.2,
+        tensorboard_log="./isaac_rl_tensorboard/"
+    )
+
+    # Train the agent
+    model.learn(total_timesteps=100000)
+
+    # Save the model
+    model.save("isaac_robot_ppo")
+
+    # Clean up
+    env.close()
+```
+
+### Curriculum Learning
+```python
+class CurriculumLearning:
+    def __init__(self, initial_difficulty=0.1, max_difficulty=1.0, threshold=0.8):
+        self.difficulty = initial_difficulty
+        self.max_difficulty = max_difficulty
+        self.threshold = threshold
+        self.performance_history = []
+
+    def update_difficulty(self, episode_rewards):
+        # Calculate average performance
+        avg_performance = np.mean(episode_rewards)
+        self.performance_history.append(avg_performance)
+
+        # Adjust difficulty based on performance
+        if len(self.performance_history) >= 10:
+            recent_performance = np.mean(self.performance_history[-10:])
+            if recent_performance >= self.threshold:
+                self.difficulty = min(self.difficulty * 1.1, self.max_difficulty)
+            else:
+                self.difficulty = max(self.difficulty * 0.9, 0.1)
+
+    def get_environment_params(self):
+        # Return parameters based on current difficulty
+        params = {
+            'obstacle_density': self.difficulty * 0.8,
+            'reward_scaling': 1.0 + self.difficulty * 0.5,
+            'noise_level': 0.1 * (1 - self.difficulty)
+        }
+        return params
+```
+
+## Advanced Features
+
+### Domain Randomization
+```python
+class DomainRandomization:
+    def __init__(self, randomization_params):
+        self.params = randomization_params
+        self.randomization_steps = 0
+
+    def randomize_environment(self):
+        # Randomize physical properties
+        self.randomize_masses()
+        self.randomize_friction()
+        self.randomize_dynamics()
+
+        # Randomize visual properties
+        self.randomize_lighting()
+        self.randomize_textures()
+
+    def randomize_masses(self):
+        for link in self.robot.links:
+            random_mass = np.random.uniform(
+                self.params['mass_range'][0],
+                self.params['mass_range'][1]
+            )
+            link.set_mass(random_mass)
+
+    def randomize_friction(self):
+        for link in self.robot.links:
+            random_friction = np.random.uniform(
+                self.params['friction_range'][0],
+                self.params['friction_range'][1]
+            )
+            link.set_friction(random_friction)
+```
+
+### Perception Simulation
+```python
+# RGB camera sensor integration
+from omni.isaac.sensor import Camera
+
+class PerceptionSensor:
+    def __init__(self, prim_path, resolution=(640, 480)):
+        self.camera = Camera(
+            prim_path=prim_path,
+            resolution=resolution
+        )
+
+    def get_rgb_image(self):
+        rgb_data = self.camera.get_rgb()
+        return rgb_data
+
+    def get_depth_image(self):
+        depth_data = self.camera.get_depth()
+        return depth_data
+
+    def get_segmentation(self):
+        seg_data = self.camera.get_segmentation()
+        return seg_data
+```
+
+## Training Workflows
+
+### Automated Training Pipeline
+```python
+import subprocess
+import os
+from datetime import datetime
+
+class TrainingPipeline:
+    def __init__(self, config_path):
+        self.config_path = config_path
+        self.results_dir = f"training_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+
+    def setup_environment(self):
+        # Create results directory
+        os.makedirs(self.results_dir, exist_ok=True)
+
+        # Copy config to results directory
+        import shutil
+        shutil.copy(self.config_path, self.results_dir)
+
+    def start_training(self):
+        # Launch Isaac Sim with training script
+        cmd = [
+            "python", "train_isaac_rl.py",
+            "--config", self.config_path,
+            "--results_dir", self.results_dir
+        ]
+
+        process = subprocess.Popen(cmd)
+        return process
+
+    def monitor_training(self, process):
+        # Monitor training progress
+        while process.poll() is None:
+            # Check for training metrics
+            # Log progress
+            # Handle early stopping if needed
+            pass
+
+    def evaluate_model(self, model_path):
+        # Load and evaluate the trained model
+        from stable_baselines3 import PPO
+        model = PPO.load(model_path)
+
+        # Run evaluation episodes
+        eval_env = make_vec_env('IsaacRobot-v0', n_envs=1)
+        obs = eval_env.reset()
+
+        total_reward = 0
+        for _ in range(100):  # 100 evaluation episodes
+            action, _states = model.predict(obs, deterministic=True)
+            obs, rewards, dones, info = eval_env.step(action)
+            total_reward += rewards
+
+        return total_reward
+```
+
+## Best Practices
+
+### Performance Optimization
+1. **Batch Training**: Use multiple environments in parallel
+2. **GPU Acceleration**: Leverage GPU for both simulation and training
+3. **Memory Management**: Optimize tensor operations and memory usage
+4. **Simulation Frequency**: Balance simulation quality with training speed
+
+### Model Transfer
+1. **Sim-to-Real Gap**: Use domain randomization to improve transfer
+2. **Validation**: Test policies in increasingly realistic simulations
+3. **Fine-tuning**: Adapt policies with minimal real-world data
+
+### Safety Considerations
+1. **Safety Constraints**: Implement safety checks in simulation
+2. **Robustness Testing**: Test policies under various conditions
+3. **Failure Recovery**: Design policies that can recover from failures
+
+## Troubleshooting
+
+### Common Issues
+- **GPU Memory**: Reduce batch sizes or environment count
+- **Simulation Instability**: Adjust physics parameters
+- **Training Divergence**: Lower learning rates or adjust hyperparameters
+- **Performance**: Optimize rendering and physics settings
+
+## Summary
+
+NVIDIA Isaac Sim provides a powerful platform for reinforcement learning in robotics, offering realistic simulation, photorealistic rendering, and seamless integration with popular RL frameworks. By combining Isaac Sim with OpenAI Gym interfaces, developers can create sophisticated training environments for robotic systems. The next chapter will explore real-world humanoid control systems and deployment strategies.
