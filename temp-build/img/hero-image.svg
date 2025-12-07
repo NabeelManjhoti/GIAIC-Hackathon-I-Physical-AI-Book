@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#121212;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#bgGradient)" />
+
+  <!-- Robot/Humanoid figure -->
+  <g transform="translate(400, 150)">
+    <!-- Robot head -->
+    <rect x="-30" y="-60" width="60" height="60" rx="10" fill="#00BFFF" opacity="0.8"/>
+    <!-- Eyes -->
+    <circle cx="-15" cy="-45" r="5" fill="#ffffff"/>
+    <circle cx="15" cy="-45" r="5" fill="#ffffff"/>
+    <!-- Decorative elements -->
+    <circle cx="-25" cy="-55" r="2" fill="#ffffff" opacity="0.7"/>
+    <circle cx="25" cy="-55" r="2" fill="#ffffff" opacity="0.7"/>
+
+    <!-- Robot body -->
+    <rect x="-25" y="0" width="50" height="80" rx="5" fill="#1e3a5f" opacity="0.8"/>
+    <!-- Chest panel -->
+    <rect x="-20" y="10" width="40" height="30" rx="3" fill="#2a4d7a" opacity="0.9"/>
+    <circle cx="0" cy="25" r="8" fill="#00BFFF" opacity="0.6"/>
+
+    <!-- Arms -->
+    <rect x="-45" y="5" width="20" height="50" rx="3" fill="#1e3a5f" opacity="0.8"/>
+    <rect x="25" y="5" width="20" height="50" rx="3" fill="#1e3a5f" opacity="0.8"/>
+
+    <!-- Legs -->
+    <rect x="-20" y="80" width="15" height="60" rx="3" fill="#1e3a5f" opacity="0.8"/>
+    <rect x="5" y="80" width="15" height="60" rx="3" fill="#1e3a5f" opacity="0.8"/>
+  </g>
+
+  <!-- AI/Neural network background elements -->
+  <g stroke="#00BFFF" stroke-width="1" opacity="0.3">
+    <circle cx="100" cy="100" r="2"/>
+    <circle cx="700" cy="80" r="2"/>
+    <circle cx="650" cy="320" r="2"/>
+    <circle cx="150" cy="350" r="2"/>
+
+    <line x1="100" y1="100" x2="700" y2="80" />
+    <line x1="700" y1="80" x2="650" y2="320" />
+    <line x1="650" y1="320" x2="150" y2="350" />
+    <line x1="150" y1="350" x2="100" y2="100" />
+    <line x1="100" y1="100" x2="650" y2="320" />
+    <line x1="700" y1="80" x2="150" y2="350" />
+  </g>
+
+  <!-- Floating particles -->
+  <circle cx="200" cy="50" r="3" fill="#00BFFF" opacity="0.6"/>
+  <circle cx="600" cy="120" r="2" fill="#00BFFF" opacity="0.6"/>
+  <circle cx="300" cy="300" r="2" fill="#00BFFF" opacity="0.6"/>
+  <circle cx="500" cy="250" r="3" fill="#00BFFF" opacity="0.6"/>
+</svg>
