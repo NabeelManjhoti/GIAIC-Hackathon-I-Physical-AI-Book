@@ -19,6 +19,9 @@ const config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
+  // Add trailingSlash to fix GitHub Pages deployment warning
+  trailingSlash: true,
+
   // Set the production url of your site here
   url: 'https://NabeelManjhoti.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -77,13 +80,13 @@ const config = {
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'textbookSidebar',
+            type: 'doc',
+            docId: 'introduction-embodied-intelligence',
             position: 'left',
             label: 'Textbook',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/NabeelManjhoti/GIAIC-Hackathon-I-Physical-AI-Book',
             label: 'GitHub',
             position: 'right',
           },
@@ -96,8 +99,8 @@ const config = {
             title: 'Textbook',
             items: [
               {
-                label: 'Physical AI & Humanoid Robotics',
-                to: '/docs/1-introduction-embodied-intelligence',
+                label: 'Introduction to Embodied Intelligence',
+                to: '/1-introduction-embodied-intelligence',
               },
             ],
           },
