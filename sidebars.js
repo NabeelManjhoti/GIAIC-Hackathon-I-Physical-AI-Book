@@ -24,7 +24,7 @@ const sidebars = {
       type: 'category',
       label: 'Physical AI & Humanoid Robotics',
       items: [
-        'author-intro',
+        'author-introduction',
         'introduction-embodied-intelligence',
         'ros2-basics',
         'gazebo-simulation',
