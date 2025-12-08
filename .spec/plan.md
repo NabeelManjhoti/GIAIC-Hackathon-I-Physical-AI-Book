@@ -1,134 +1,76 @@
-# Landing Page Cyberpunk Redesign - Implementation Plan
+# LocalStorage Fix Implementation Plan
 
 ## Overview
-This plan outlines the implementation of the cyberpunk-themed landing page for the Physical AI & Humanoid Robotics textbook, following the specifications in `.spec/landing_page_v3.md`. The implementation will be executed in three distinct phases.
+This plan outlines the implementation steps to resolve client-side API errors during Docusaurus build by preventing Server-Side Rendering (SSR) from accessing browser-only APIs like `localStorage` or `window`, based on the requirements in `.spec/localstorage_fix.md`.
 
-## Phase 1: Asset Preparation
-**Objective**: Set up the foundational CSS variables and styling system for the cyberpunk theme.
-
-### Tasks
-1. **Create/update CSS variables** in `src/css/custom.css`:
-   - Define color variables matching the cyberpunk palette:
-     - `--cyber-black: #050505`
-     - `--dark-grey: #121212`
-     - `--neon-cyan: #00f3ff`
-     - `--neon-magenta: #ff00ff`
-     - `--electric-green: #39ff14`
-     - `--light-grey: #E0E0E0`
-   - Add variables for glassmorphism effects:
-     - `--glass-bg: rgba(18, 18, 18, 0.3)`
-     - `--glass-border: rgba(0, 243, 255, 0.5)`
-     - `--glass-glow: 0 0 15px rgba(0, 243, 255, 0.5)`
-   - Define typography variables for cyberpunk aesthetic
-
-2. **Verify existing CSS structure**:
-   - Check if `src/css/custom.css` exists and can be modified
-   - Ensure variables integrate with Docusaurus styling system
-   - Test variable accessibility across components
-
-3. **Prepare placeholder assets**:
-   - Document placeholder image URLs for hero background
-   - Prepare unDraw illustration URLs for feature cards
-   - Create fallback image system structure
-
-### Acceptance Criteria
-- CSS variables are defined and accessible globally
-- Variables match the cyberpunk color palette from the specification
-- Custom CSS integrates properly with Docusaurus theme
-- All color values match the specification requirements
-
-## Phase 2: Component Creation
-**Objective**: Create reusable React components for the hero section and feature grid with cyberpunk styling.
+## Phase 1: Component Scanning
+**Objective**: Identify all custom React components that directly access browser-only APIs.
 
 ### Tasks
-1. **Create HeroSection component** (`src/components/HeroSection.js`):
-   - Implement full-screen height (`100vh`) layout
-   - Add background styling with dark gradient or image
-   - Create headline with neon glow effect using CSS text-shadow:
-     - Primary glow: 0 0 10px #00f3ff
-     - Secondary glow: 0 0 20px #00f3ff
-     - Tertiary glow: 0 0 30px #00f3ff
-   - Implement "Enter the Simulation" holographic button with:
-     - Transparent background
-     - Neon border (Neon Cyan #00f3ff)
-     - Hover effects with intensified glow
-     - Proper link to `/docs/intro`
-   - Ensure responsive design and accessibility
+1. **Scan Custom Components Directory**:
+   - Search for all `.jsx` and `.js` files in `src/components/`
+   - Search for all `.jsx` and `.js` files in `src/pages/`
+   - Specifically examine the Cyberpunk landing page components
+   - Look for any RAGChatWidget.jsx file if it exists
 
-2. **Create FeatureGrid component** (`src/components/FeatureGrid.js`):
-   - Implement 3-column grid layout (responsive)
-   - Create glassmorphism cards with:
-     - Semi-transparent background: rgba(18, 18, 18, 0.3)
-     - Backdrop-filter blur(10px)
-     - Neon borders with glow effect
-     - Hover effects with intensified glow and scale
-   - Add content structure for each card:
-     - ROS 2, Simulation, and RL topics
-     - Placeholder images from unDraw
-     - Title and description text
-   - Implement responsive breakpoints:
-     - Desktop: 3-column grid (≥1024px)
-     - Tablet: 2-column grid (768px - 1023px)
-     - Mobile: Single column (<768px)
+2. **Identify Problematic Code Patterns**:
+   - Direct use of `localStorage` (e.g., `localStorage.getItem()`, `localStorage.setItem()`)
+   - Direct use of `window` object (e.g., `window.location`, `window.localStorage`)
+   - Direct use of other browser-only APIs (e.g., `document`, `navigator`)
 
-3. **Component styling**:
-   - Use CSS Modules for each component
-   - Apply cyberpunk styling consistently
-   - Ensure hover and focus states work properly
-   - Test accessibility features
+3. **Document Findings**:
+   - List all files containing problematic code
+   - Note specific lines and usage patterns
+   - Prioritize fixes based on criticality
 
-### Acceptance Criteria
-- Both components are created as functional React components
-- HeroSection implements all specified visual effects
-- FeatureGrid implements glassmorphism cards with proper hover effects
-- Components are responsive across all device sizes
-- All accessibility requirements are met
-- Components use CSS variables defined in Phase 1
-
-## Phase 3: Page Assembly
-**Objective**: Assemble the components into the main landing page and integrate with the Docusaurus framework.
+## Phase 2: Code Refactoring
+**Objective**: Apply necessary fixes to resolve SSR errors by wrapping browser-only API access appropriately.
 
 ### Tasks
-1. **Create/Update landing page** (`src/pages/index.js`):
-   - Import HeroSection and FeatureGrid components
-   - Structure page layout with proper component placement
-   - Ensure no Docusaurus layout restrictions interfere with full-screen hero
-   - If needed, customize Docusaurus layout to accommodate full-screen design
-   - Maintain Docusaurus SEO and accessibility features
+1. **Apply useEffect Pattern**:
+   - For code that needs to run only in browser environment
+   - Wrap localStorage and window access in `React.useEffect` hooks
+   - Ensure proper cleanup if necessary
 
-2. **Integrate components**:
-   - Place HeroSection at the top of the page
-   - Position FeatureGrid below the hero section
-   - Add proper spacing between sections
-   - Ensure smooth scrolling between sections
+2. **Apply Window Check Pattern**:
+   - For code that conditionally accesses browser APIs
+   - Use `if (typeof window !== 'undefined')` checks
+   - Implement fallback behavior for SSR environment
 
-3. **Final testing and optimization**:
-   - Test responsive behavior across devices
-   - Verify all interactive elements work properly
-   - Check performance and loading times
-   - Validate accessibility features
-   - Test cross-browser compatibility
-   - Optimize image loading and placeholder implementation
+3. **Test Refactored Code**:
+   - Verify that components still function correctly in browser
+   - Ensure no new errors are introduced
+   - Test both client-side and server-side rendering paths
 
-4. **Documentation and cleanup**:
-   - Add comments to explain custom styling
-   - Ensure code follows project standards
-   - Update any necessary configuration files
-   - Prepare for deployment
+## Phase 3: Build Verification & Deployment
+**Objective**: Confirm successful build and deploy the fixed site to GitHub Pages.
 
-### Acceptance Criteria
-- Landing page successfully implements the cyberpunk design
-- HeroSection occupies full viewport height with proper styling
-- FeatureGrid displays 3 cards with glassmorphism effects
-- Page is responsive and accessible
-- All links and interactive elements function correctly
-- Performance meets requirements
-- Code integrates properly with Docusaurus framework
+### Tasks
+1. **Local Build Testing**:
+   - Execute `yarn build` to verify successful build
+   - Address any remaining build errors
+   - Test the built site locally if possible
 
-## Timeline
-The implementation should follow the sequential order of phases, with each phase completed before moving to the next. Each phase should be tested before proceeding to ensure proper functionality.
+2. **Commit Changes**:
+   - Stage all modified files
+   - Create a descriptive commit message
+   - Push changes to the current branch
 
-## Risk Mitigation
-- Phase 1: Verify CSS variable compatibility with Docusaurus early
-- Phase 2: Test component reusability and responsiveness during development
-- Phase 3: Ensure Docusaurus integration doesn't break existing functionality
+3. **Final Deployment**:
+   - Merge changes to main branch if on a feature branch
+   - Execute deployment command: `GIT_USER=<YOUR_USERNAME> yarn deploy`
+   - Verify deployment success and site functionality
+
+## Dependencies
+- Phase 1 must be completed before Phase 2 (scanning before fixing)
+- Phase 2 must be completed before Phase 3 (fixing before deployment)
+
+## Files to be Modified
+1. All identified components with localStorage/window access
+2. Potentially package.json if deployment script needs updates
+
+## Success Criteria
+- [ ] All components pass SSR without errors
+- [ ] Build command completes successfully (`yarn build`)
+- [ ] Site deploys to GitHub Pages without errors
+- [ ] All functionality preserved after fixes

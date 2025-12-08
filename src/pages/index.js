@@ -1,9 +1,72 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import styles from './Home.module.css';
+
+function CyberpunkButton({ to, children, ...props }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const buttonRef = useRef(null);
+
+  // Only apply effects on client side
+  useEffect(() => {
+    if (typeof window !== 'undefined' && buttonRef.current) {
+      const button = buttonRef.current;
+      if (isHovered) {
+        button.style.boxShadow = '0 0 20px var(--neon-cyan)';
+        button.style.background = 'rgba(0, 243, 255, 0.1)';
+      } else {
+        button.style.boxShadow = '0 0 10px var(--neon-cyan)';
+        button.style.background = 'transparent';
+      }
+    }
+  }, [isHovered]);
+
+  const handleMouseEnter = () => {
+    if (typeof window !== 'undefined') {
+      setIsHovered(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (typeof window !== 'undefined') {
+      setIsHovered(false);
+    }
+  };
+
+  return (
+    <Link
+      ref={buttonRef}
+      className={clsx(
+        styles.primaryButton,
+        'button button--lg'
+      )}
+      to={to}
+      style={{
+        background: 'transparent',
+        border: '2px solid var(--neon-cyan)',
+        color: 'var(--neon-cyan)',
+        padding: '1rem 2rem',
+        fontSize: '1.2rem',
+        fontWeight: 'bold',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        textDecoration: 'none',
+        transition: 'all 0.3s ease',
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: isHovered ? '0 0 20px var(--neon-cyan)' : '0 0 10px var(--neon-cyan)',
+        fontFamily: `'Roboto Mono', monospace`
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      {...props}
+    >
+      {children}
+    </Link>
+  );
+}
 
 function HeroSection() {
   return (
@@ -68,39 +131,9 @@ function HeroSection() {
             Master ROS 2, Gazebo, and Isaac Sim.
           </p>
           <div className={styles.buttons}>
-            <Link
-              className={clsx(
-                styles.primaryButton,
-                'button button--lg'
-              )}
-              to="/author-intro/"
-              style={{
-                background: 'transparent',
-                border: '2px solid var(--neon-cyan)',
-                color: 'var(--neon-cyan)',
-                padding: '1rem 2rem',
-                fontSize: '1.2rem',
-                fontWeight: 'bold',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-                position: 'relative',
-                overflow: 'hidden',
-                boxShadow: '0 0 10px var(--neon-cyan)',
-                fontFamily: `'Roboto Mono', monospace`
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.boxShadow = '0 0 20px var(--neon-cyan)';
-                e.target.style.background = 'rgba(0, 243, 255, 0.1)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.boxShadow = '0 0 10px var(--neon-cyan)';
-                e.target.style.background = 'transparent';
-              }}
-            >
+            <CyberpunkButton to="/author-intro/">
               Enter the Simulation
-            </Link>
+            </CyberpunkButton>
           </div>
         </div>
       </div>
@@ -109,6 +142,37 @@ function HeroSection() {
 }
 
 function FeatureCard({ title, description, iconUrl }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef(null);
+
+  // Only apply effects on client side
+  useEffect(() => {
+    if (typeof window !== 'undefined' && cardRef.current) {
+      const card = cardRef.current;
+      if (isHovered) {
+        card.style.boxShadow = '0 0 25px rgba(0, 243, 255, 0.8), 0 4px 20px rgba(0, 0, 0, 0.3)';
+        card.style.backdropFilter = 'blur(15px)';
+        card.style.transform = 'scale(1.02)';
+      } else {
+        card.style.boxShadow = 'var(--glass-glow), 0 4px 20px rgba(0, 0, 0, 0.3)';
+        card.style.backdropFilter = 'blur(10px)';
+        card.style.transform = 'scale(1)';
+      }
+    }
+  }, [isHovered]);
+
+  const handleMouseEnter = () => {
+    if (typeof window !== 'undefined') {
+      setIsHovered(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (typeof window !== 'undefined') {
+      setIsHovered(false);
+    }
+  };
+
   return (
     <div
       className="col col--4"
@@ -120,9 +184,10 @@ function FeatureCard({ title, description, iconUrl }) {
       }}
     >
       <div
+        ref={cardRef}
         style={{
           background: 'var(--glass-bg)',
-          backdropFilter: 'blur(10px)',
+          backdropFilter: isHovered ? 'blur(15px)' : 'blur(10px)',
           border: '1px solid var(--glass-border)',
           borderRadius: '12px',
           padding: '2rem',
@@ -133,21 +198,16 @@ function FeatureCard({ title, description, iconUrl }) {
           alignItems: 'center',
           justifyContent: 'center',
           textAlign: 'center',
-          boxShadow: 'var(--glass-glow), 0 4px 20px rgba(0, 0, 0, 0.3)',
+          boxShadow: isHovered
+            ? '0 0 25px rgba(0, 243, 255, 0.8), 0 4px 20px rgba(0, 0, 0, 0.3)'
+            : 'var(--glass-glow), 0 4px 20px rgba(0, 0, 0, 0.3)',
           transition: 'all 0.3s ease',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          transform: isHovered ? 'scale(1.02)' : 'scale(1)'
         }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.boxShadow = '0 0 25px rgba(0, 243, 255, 0.8), 0 4px 20px rgba(0, 0, 0, 0.3)';
-          e.currentTarget.style.backdropFilter = 'blur(15px)';
-          e.currentTarget.style.transform = 'scale(1.02)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = 'var(--glass-glow), 0 4px 20px rgba(0, 0, 0, 0.3)';
-          e.currentTarget.style.backdropFilter = 'blur(10px)';
-          e.currentTarget.style.transform = 'scale(1)';
-        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <div style={{
           width: '80px',
