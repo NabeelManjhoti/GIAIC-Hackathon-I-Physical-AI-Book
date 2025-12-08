@@ -88,24 +88,8 @@
   flex-wrap: wrap;
 }
 
-.primaryButton {
-  background-color: #00BFFF !important; /* Electric blue color */
-  color: #000000 !important; /* Black text for contrast */
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  display: inline-block;
-}
-
-.primaryButton:hover {
-  background-color: #009ACD !important; /* Darker electric blue on hover */
-  color: #000000 !important;
-}
+/* Cyberpunk button styles are implemented inline in the component */
+/* This file maintains the existing layout and responsive styles */
 
 @media screen and (max-width: 1100px) {
   .heroBanner {

@@ -1,90 +1,124 @@
-# Premium Landing Page v2 Tasks
+# Landing Page Cyberpunk Redesign - Task Checklist
 
-## Priority 1: Author Introduction and CTA Fix
+## Phase 1: Asset Preparation
+**Objective**: Set up the foundational CSS variables and styling system for the cyberpunk theme.
 
-### Task 1: Create Author Introduction Page
-- [ ] Create file `docs/00-author-intro.mdx`
-- [ ] Write professional introduction of Nabeel Manjhoti
-- [ ] Include relevant background and expertise in Embodied AI/Humanoid Robotics
-- [ ] Ensure content length is approximately 200-300 words
-- [ ] Use professional tone that sets the stage for the book
-- [ ] Verify the page can be accessed at `/docs/00-author-intro`
+### Tasks
+- [ ] **Create/update CSS variables** in `src/css/custom.css`:
+  - [ ] Define color variables matching the cyberpunk palette:
+    - [ ] `--cyber-black: #050505`
+    - [ ] `--dark-grey: #121212`
+    - [ ] `--neon-cyan: #00f3ff`
+    - [ ] `--neon-magenta: #ff00ff`
+    - [ ] `--electric-green: #39ff14`
+    - [ ] `--light-grey: #E0E0E0`
+  - [ ] Add variables for glassmorphism effects:
+    - [ ] `--glass-bg: rgba(18, 18, 18, 0.3)`
+    - [ ] `--glass-border: rgba(0, 243, 255, 0.5)`
+    - [ ] `--glass-glow: 0 0 15px rgba(0, 243, 255, 0.5)`
+  - [ ] Define typography variables for cyberpunk aesthetic
 
-### Task 2: Update Sidebar Configuration
-- [ ] Locate and read `sidebars.js` file
-- [ ] Update the docs sidebar configuration to place "Author Introduction" as the first item
-- [ ] Ensure the new page reference comes before "Introduction to Embodied Intelligence"
-- [ ] Maintain proper ordering for all subsequent items
-- [ ] Test that the sidebar displays correctly with the new order
+- [ ] **Verify existing CSS structure**:
+  - [ ] Check if `src/css/custom.css` exists and can be modified
+  - [ ] Ensure variables integrate with Docusaurus styling system
+  - [ ] Test variable accessibility across components
 
-### Task 3: Fix CTA Button Link Target
-- [ ] Identify the current CTA button in the landing page
-- [ ] Update the link target to point to `/docs/00-author-intro`
-- [ ] Verify the link works without producing 404 errors
-- [ ] Test the navigation functionality
+- [ ] **Prepare placeholder assets**:
+  - [ ] Document placeholder image URLs for hero background
+  - [ ] Prepare unDraw illustration URLs for feature cards
+  - [ ] Create fallback image system structure
 
-## Priority 2: Landing Page Redesign
+### Acceptance Criteria
+- [ ] CSS variables are defined and accessible globally
+- [ ] Variables match the cyberpunk color palette from the specification
+- [ ] Custom CSS integrates properly with Docusaurus theme
+- [ ] All color values match the specification requirements
 
-### Task 4: Override Landing Page Component
-- [ ] Create or update `src/pages/index.js` with custom implementation
-- [ ] Remove all default Docusaurus branding elements
-- [ ] Remove default hero section and promotional content
-- [ ] Maintain Docusaurus functionality and routing
-- [ ] Ensure the component structure supports the new design
+## Phase 2: Component Creation
+**Objective**: Create reusable React components for the hero section and feature grid with cyberpunk styling.
 
-### Task 5: Implement Premium Dark Theme Styling
-- [ ] Create `src/pages/index.module.css` for CSS Modules styling
-- [ ] Implement primary background color: `#121212`
-- [ ] Implement primary text color: `#FFFFFF`
-- [ ] Implement secondary text color: `#CCCCCC`
-- [ ] Implement accent color: `#00BFFF` (electric blue)
-- [ ] Implement secondary accent color: `#1E1E1E` (blue-gray)
-- [ ] Apply clean, modern sans-serif typography
-- [ ] Create appropriate text hierarchy
+### Tasks
+- [ ] **Create HeroSection component** (`src/components/HeroSection.js`):
+  - [ ] Implement full-screen height (`100vh`) layout
+  - [ ] Add background styling with dark gradient or image
+  - [ ] Create headline with neon glow effect using CSS text-shadow:
+    - [ ] Primary glow: 0 0 10px #00f3ff
+    - [ ] Secondary glow: 0 0 20px #00f3ff
+    - [ ] Tertiary glow: 0 0 30px #00f3ff
+  - [ ] Implement "Enter the Simulation" holographic button with:
+    - [ ] Transparent background
+    - [ ] Neon border (Neon Cyan #00f3ff)
+    - [ ] Hover effects with intensified glow
+    - [ ] Proper link to `/docs/intro`
+  - [ ] Ensure responsive design and accessibility
 
-### Task 6: Add Primary Tagline
-- [ ] Add the tagline "Master Embodied AI and Humanoid Robotics with ROS 2 and NVIDIA Isaac Sim"
-- [ ] Place the tagline in a prominent position in the hero section
-- [ ] Style the tagline with appropriate sizing and contrast
-- [ ] Ensure readability across all device sizes
+- [ ] **Create FeatureGrid component** (`src/components/FeatureGrid.js`):
+  - [ ] Implement 3-column grid layout (responsive)
+  - [ ] Create glassmorphism cards with:
+    - [ ] Semi-transparent background: rgba(18, 18, 18, 0.3)
+    - [ ] Backdrop-filter blur(10px)
+    - [ ] Neon borders with glow effect
+    - [ ] Hover effects with intensified glow and scale
+  - [ ] Add content structure for each card:
+    - [ ] ROS 2 topic card with placeholder image
+    - [ ] Simulation topic card with placeholder image
+    - [ ] RL topic card with placeholder image
+    - [ ] Title and description text for each card
+  - [ ] Implement responsive breakpoints:
+    - [ ] Desktop: 3-column grid (≥1024px)
+    - [ ] Tablet: 2-column grid (768px - 1023px)
+    - [ ] Mobile: Single column (<768px)
 
-### Task 7: Create and Style CTA Button
-- [ ] Create the CTA button in the hero section
-- [ ] Style the button with accent color (`#00BFFF`)
-- [ ] Implement hover and active states
-- [ ] Ensure proper sizing and spacing
-- [ ] Add appropriate button text (e.g., "Meet the Author", "Start Reading")
-- [ ] Verify button is responsive and touch-friendly on mobile
+- [ ] **Component styling**:
+  - [ ] Use CSS Modules for each component
+  - [ ] Apply cyberpunk styling consistently
+  - [ ] Ensure hover and focus states work properly
+  - [ ] Test accessibility features
 
-### Task 8: Implement Responsive Design
-- [ ] Ensure design works on desktop, tablet, and mobile
-- [ ] Implement appropriate breakpoints
-- [ ] Optimize touch targets for mobile devices
-- [ ] Maintain proper spacing and alignment across all devices
-- [ ] Test responsive behavior across different screen sizes
+### Acceptance Criteria
+- [ ] Both components are created as functional React components
+- [ ] HeroSection implements all specified visual effects
+- [ ] FeatureGrid implements glassmorphism cards with proper hover effects
+- [ ] Components are responsive across all device sizes
+- [ ] All accessibility requirements are met
+- [ ] Components use CSS variables defined in Phase 1
 
-### Task 9: Accessibility Implementation
-- [ ] Add proper ARIA labels where needed
-- [ ] Ensure color contrast meets WCAG standards
-- [ ] Verify keyboard navigation works properly
-- [ ] Test screen reader compatibility
-- [ ] Ensure proper focus indicators for interactive elements
+## Phase 3: Page Assembly
+**Objective**: Assemble the components into the main landing page and integrate with the Docusaurus framework.
 
-## Priority 3: Testing and Validation
+### Tasks
+- [ ] **Create/Update landing page** (`src/pages/index.js`):
+  - [ ] Import HeroSection and FeatureGrid components
+  - [ ] Structure page layout with proper component placement
+  - [ ] Ensure no Docusaurus layout restrictions interfere with full-screen hero
+  - [ ] If needed, customize Docusaurus layout to accommodate full-screen design
+  - [ ] Maintain Docusaurus SEO and accessibility features
 
-### Task 10: Visual Testing
-- [ ] Verify the dark theme renders correctly
-- [ ] Check that all text is readable against the dark background
-- [ ] Ensure the CTA button stands out appropriately
-- [ ] Validate that the primary tagline is prominently displayed
+- [ ] **Integrate components**:
+  - [ ] Place HeroSection at the top of the page
+  - [ ] Position FeatureGrid below the hero section
+  - [ ] Add proper spacing between sections
+  - [ ] Ensure smooth scrolling between sections
 
-### Task 11: Functional Testing
-- [ ] Confirm the CTA button links to `/docs/00-author-intro`
-- [ ] Test responsive behavior on different screen sizes
-- [ ] Verify all existing site functionality remains intact
-- [ ] Ensure no 404 errors occur on any pages
+- [ ] **Final testing and optimization**:
+  - [ ] Test responsive behavior across devices
+  - [ ] Verify all interactive elements work properly
+  - [ ] Check performance and loading times
+  - [ ] Validate accessibility features
+  - [ ] Test cross-browser compatibility
+  - [ ] Optimize image loading and placeholder implementation
 
-### Task 12: Cross-Browser Compatibility
-- [ ] Test in major browsers (Chrome, Firefox, Safari, Edge)
-- [ ] Verify consistent appearance and functionality
-- [ ] Address any browser-specific issues
+- [ ] **Documentation and cleanup**:
+  - [ ] Add comments to explain custom styling
+  - [ ] Ensure code follows project standards
+  - [ ] Update any necessary configuration files
+  - [ ] Prepare for deployment
+
+### Acceptance Criteria
+- [ ] Landing page successfully implements the cyberpunk design
+- [ ] HeroSection occupies full viewport height with proper styling
+- [ ] FeatureGrid displays 3 cards with glassmorphism effects
+- [ ] Page is responsive and accessible
+- [ ] All links and interactive elements function correctly
+- [ ] Performance meets requirements
+- [ ] Code integrates properly with Docusaurus framework

@@ -20,7 +20,31 @@ All technical content about AI, robotics, and physical computing must be fact-ch
 ### VI. Modular & Scalable Structure
 Organize content in logical, modular sections that can grow over time. Use consistent naming conventions and folder structures that support easy navigation and future expansion of topics.
 
-## Technology Constraints
+## Design Language & Visual Identity
+
+### I. Cyberpunk / Dark Neon Theme
+The visual identity of the Physical AI & Humanoid Robotics textbook follows a **Cyberpunk / Dark Neon** aesthetic that reflects the futuristic nature of the subject matter.
+
+#### Color Palette:
+- **Backgrounds:** Deep Black (#050505), Dark Grey (#121212)
+- **Accents:** Neon Cyan (#00f3ff), Neon Magenta (#ff00ff), Electric Green (#39ff14)
+
+#### Typography:
+- Tech-inspired, clean sans-serif fonts (e.g., Orbitron or Roboto Mono for headers)
+- Body text should maintain readability while complementing the futuristic aesthetic
+
+#### UI Elements:
+- Glassmorphism cards for content sections
+- Glowing borders for important elements and callouts
+- Glitch effect text on hover for interactive elements
+- High-contrast elements to enhance readability against dark backgrounds
+
+#### Visual Assets:
+- Hero images must feature high-quality "Physical AI" or "Humanoid" visuals
+- All imagery should align with the cyberpunk aesthetic while maintaining educational value
+- Technical diagrams should incorporate the accent colors appropriately
+
+### II. Technology Constraints
 
 The project will use Docusaurus v3 with React and Tailwind CSS as specified. Deployment target is GitHub Pages with no backend code. All content must be compatible with static site generation and meet GitHub Pages hosting requirements.
 
